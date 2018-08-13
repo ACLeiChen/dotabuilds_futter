@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'resource/strings.dart';
 
-
-
-void main() => runApp(new MyApp());
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -13,17 +11,9 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Dota Builds',
       theme: new ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or press Run > Flutter Hot Reload in IntelliJ). Notice that the
-        // counter didn't reset back to zero; the application is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: new MyHomePage(title: 'Flutter Demo Home Page'),
+      home: new MyHomePage(title: 'Flutter Demo Home Pag\e'),
     );
   }
 }
@@ -31,65 +21,107 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   var _bottomNavIndex = 0;
 
-  void _selectTab() {
-    setState(() {
+  Widget _bodySection;
 
-    });
-  }
+  Widget _profileTab = Container(
+    child: Column(
+      children: <Widget>[
+        Stack(
+          
+        ),
+        Column()
+      ],
+    ),
+  );
+
+  Widget _analyzerTab;
+
+  Widget _celebritiesTab;
+
+  Widget _highlightsTab;
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return new Scaffold(
-      body: new Container(),
+    return Scaffold(
+      body: Center(child: Text("data111")),
       bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _bottomNavIndex,
-          items: <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text(Strings.bottomNavigationBarItem_Profile)
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text(Strings.bottomNavigationBarItem_Analyzer)
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text(Strings.bottomNavigationBarItem_Celebrities)
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              title: Text(Strings.bottomNavigationBarItem_Highlights)
-            ),
-          ],
-          onTap: (int index){
-            _selectTab();
-          },
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _bottomNavIndex,
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                color: Colors.redAccent,
+              ),
+              title: Text(
+                Strings.bottomNavigationBarItem_Profile,
+                style: TextStyle(color: Colors.black54),
+              )),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.compare,
+                color: Colors.redAccent,
+              ),
+              title: Text(
+                Strings.bottomNavigationBarItem_Analyzer,
+                style: TextStyle(color: Colors.black54),
+              )),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.people,
+                color: Colors.redAccent,
+              ),
+              title: Text(
+                Strings.bottomNavigationBarItem_Celebrities,
+                style: TextStyle(color: Colors.black54),
+              )),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.video_library,
+                color: Colors.redAccent,
+              ),
+              title: Text(
+                Strings.bottomNavigationBarItem_Highlights,
+                style: TextStyle(color: Colors.black54),
+              )),
+        ],
+        onTap: (int index) {
+          setState(() {
+            _bottomNavIndex = index;
+          });
+        },
       ),
     );
+  }
+
+  void _switchBody(int index) {
+    switch (index) {
+      case 0:
+        _bodySection = _profileTab;
+        break;
+
+      case 1:
+        _bodySection = _analyzerTab;
+        break;
+
+      case 2:
+        _bodySection = _celebritiesTab;
+        break;
+
+      case 3:
+        _bodySection = _highlightsTab;
+        break;
+      default:
+        _bodySection = _profileTab;
+    }
   }
 }
