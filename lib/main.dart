@@ -30,18 +30,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   var _bottomNavIndex = 0;
 
-  Widget _bodySection;
+  List<Widget> _bodySection = List(4);
 
-  Widget _profileTab = Container(
-    child: Column(
-      children: <Widget>[
-        Stack(
-          
-        ),
-        Column()
-      ],
-    ),
-  );
+  Widget _profileTab;
 
   Widget _analyzerTab;
 
@@ -49,10 +40,102 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget _highlightsTab;
 
+  _MyHomePageState() {
+    _profileTab = Container(
+      color: Colors.yellow,
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            flex: 2,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Container(
+                    color: Colors.red,
+                    child: Icon(
+                      Icons.star,
+                      size: 50.0,
+                    )),
+                Container(
+                    color: Colors.red,
+                    child: Icon(
+                      Icons.star,
+                      size: 120.0,
+                    )),
+                Container(
+                    color: Colors.red,
+                    child: Icon(
+                      Icons.star,
+                      size: 50.0,
+                    )),
+              ],
+            ),
+          ),
+          Expanded(
+            flex: 5,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Container(
+                    color: Colors.green,
+                    child: Icon(
+                      Icons.star,
+                      size: 50.0,
+                    )),
+                Container(
+                    color: Colors.red,
+                    child: Icon(
+                      Icons.star,
+                      size: 50.0,
+                    )),
+                Container(
+                    color: Colors.green,
+                    child: Icon(
+                      Icons.star,
+                      size: 50.0,
+                    )),
+                Container(
+                    color: Colors.red,
+                    child: Icon(
+                      Icons.star,
+                      size: 50.0,
+                    )),
+                Container(
+                    color: Colors.green,
+                    child: Icon(
+                      Icons.star,
+                      size: 50.0,
+                    )),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+
+    _analyzerTab = Container(
+      color: Colors.yellow,
+      child: Center(child: Text("1")),
+    );
+
+    _celebritiesTab = Center(child: Text("2"));
+
+    _highlightsTab = Center(child: Text("3"));
+
+    _bodySection[0] = _profileTab;
+    _bodySection[1] = _analyzerTab;
+    _bodySection[2] = _celebritiesTab;
+    _bodySection[3] = _highlightsTab;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text("data111")),
+      body: _bodySection[_bottomNavIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         currentIndex: _bottomNavIndex,
@@ -101,27 +184,5 @@ class _MyHomePageState extends State<MyHomePage> {
         },
       ),
     );
-  }
-
-  void _switchBody(int index) {
-    switch (index) {
-      case 0:
-        _bodySection = _profileTab;
-        break;
-
-      case 1:
-        _bodySection = _analyzerTab;
-        break;
-
-      case 2:
-        _bodySection = _celebritiesTab;
-        break;
-
-      case 3:
-        _bodySection = _highlightsTab;
-        break;
-      default:
-        _bodySection = _profileTab;
-    }
   }
 }
