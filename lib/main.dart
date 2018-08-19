@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return new MaterialApp(
       title: 'Dota Builds',
       theme: new ThemeData(
-        primarySwatch: Colors.blue,
+        primaryColor: Colors.white,
       ),
       home: new MyHomePage(title: 'Flutter Demo Home Pag\e'),
     );
@@ -41,76 +41,100 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget _highlightsTab;
 
   _MyHomePageState() {
+    //to do: move tab creation to a separate file
     _profileTab = Container(
       color: Colors.yellow,
       child: Column(
         children: <Widget>[
           Expanded(
             flex: 2,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Container(
-                    color: Colors.red,
-                    child: Icon(
-                      Icons.star,
-                      size: 50.0,
-                    )),
-                Container(
-                    color: Colors.red,
-                    child: Icon(
-                      Icons.star,
-                      size: 120.0,
-                    )),
-                Container(
-                    color: Colors.red,
-                    child: Icon(
-                      Icons.star,
-                      size: 50.0,
-                    )),
-              ],
+            child: Container(
+              color: Colors.blue,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  Container(
+                      color: Colors.red,
+                      child: Icon(
+                        Icons.star,
+                        size: 50.0,
+                      )),
+                  Container(
+                      width: 180.0,
+                      height: 180.0,
+                      color: Colors.red,
+                      child: Icon(
+                        Icons.star,
+                        size: 50.0,
+                      )),
+                  Container(
+                      color: Colors.red,
+                      child: Icon(
+                        Icons.star,
+                        size: 50.0,
+                      )),
+                ],
+              ),
             ),
           ),
           Expanded(
             flex: 5,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
-                Container(
-                    color: Colors.green,
-                    child: Icon(
-                      Icons.star,
-                      size: 50.0,
-                    )),
-                Container(
-                    color: Colors.red,
-                    child: Icon(
-                      Icons.star,
-                      size: 50.0,
-                    )),
-                Container(
-                    color: Colors.green,
-                    child: Icon(
-                      Icons.star,
-                      size: 50.0,
-                    )),
-                Container(
-                    color: Colors.red,
-                    child: Icon(
-                      Icons.star,
-                      size: 50.0,
-                    )),
-                Container(
-                    color: Colors.green,
-                    child: Icon(
-                      Icons.star,
-                      size: 50.0,
-                    )),
-              ],
+            child: Container(
+              color: Colors.teal,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                        color: Colors.green,
+                        child: Icon(
+                          Icons.star,
+                          size: 50.0,
+                        )),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                        color: Colors.red,
+                        child: Icon(
+                          Icons.star,
+                          size: 50.0,
+                        )),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                        color: Colors.green,
+                        child: Icon(
+                          Icons.star,
+                          size: 50.0,
+                        )),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                        color: Colors.red,
+                        child: Icon(
+                          Icons.star,
+                          size: 50.0,
+                        )),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                        color: Colors.green,
+                        child: Icon(
+                          Icons.star,
+                          size: 50.0,
+                        )),
+                  ),
+                ],
+              ),
             ),
           )
         ],
@@ -135,6 +159,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("App bar"),
+      ),
       body: _bodySection[_bottomNavIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
