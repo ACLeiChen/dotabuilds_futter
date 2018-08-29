@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class ProfileTab extends StatelessWidget{
-  
+class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,13 +24,16 @@ class ProfileTab extends StatelessWidget{
                     onPressed: _gotoMoreGamesPages,
                   )),
                   Container(
+                    width: 180.0,
+                    height: 180.0,
+                    color: Colors.red,
+                    child: Image.asset(
+                      'lib/resource/images/user/avatar.jpg',
                       width: 180.0,
                       height: 180.0,
-                      color: Colors.red,
-                      child: Icon(
-                        Icons.star,
-                        size: 50.0,
-                      )),
+                      fit: BoxFit.scaleDown,
+                    ),
+                  ),
                   Container(
                       // color: Colors.red,
                       child: IconButton(
@@ -108,5 +110,4 @@ class ProfileTab extends StatelessWidget{
   void _refreshProfileTab() {}
 
   void _gotoMoreGamesPages() {}
-
 }
