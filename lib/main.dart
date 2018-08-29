@@ -1,3 +1,4 @@
+import 'package:dotabuilds_futter/src/widgets/profileTab.dart';
 import 'package:flutter/material.dart';
 
 import 'resource/strings.dart';
@@ -42,104 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   _MyHomePageState() {
     //to do: move tab creation to a separate file
-    _profileTab = Container(
-      color: Colors.yellow,
-      child: Column(
-        children: <Widget>[
-          Expanded(
-            flex: 2,
-            child: Container(
-              color: Colors.blue,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  Container(
-                      color: Colors.red,
-                      child: Icon(
-                        Icons.star,
-                        size: 50.0,
-                      )),
-                  Container(
-                      width: 180.0,
-                      height: 180.0,
-                      color: Colors.red,
-                      child: Icon(
-                        Icons.star,
-                        size: 50.0,
-                      )),
-                  Container(
-                      color: Colors.red,
-                      child: Icon(
-                        Icons.star,
-                        size: 50.0,
-                      )),
-                ],
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 5,
-            child: Container(
-              color: Colors.teal,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                        color: Colors.green,
-                        child: Icon(
-                          Icons.star,
-                          size: 50.0,
-                        )),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                        color: Colors.red,
-                        child: Icon(
-                          Icons.star,
-                          size: 50.0,
-                        )),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                        color: Colors.green,
-                        child: Icon(
-                          Icons.star,
-                          size: 50.0,
-                        )),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                        color: Colors.red,
-                        child: Icon(
-                          Icons.star,
-                          size: 50.0,
-                        )),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: Container(
-                        color: Colors.green,
-                        child: Icon(
-                          Icons.star,
-                          size: 50.0,
-                        )),
-                  ),
-                ],
-              ),
-            ),
-          )
-        ],
-      ),
-    );
+    _profileTab = ProfileTab();
 
     _analyzerTab = Container(
       color: Colors.yellow,
@@ -160,7 +64,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("App bar"),
+        title: Text(Strings.appBar),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.settings),
+            onPressed: _goToSettingsPage,
+          )
+        ],
       ),
       body: _bodySection[_bottomNavIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -212,4 +122,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
+  void _goToSettingsPage() {}
 }
